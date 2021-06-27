@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -15,7 +15,7 @@ import practice.Base;
 
 import java.util.List;
 
-public class testHeroku extends Base {
+public class TestHeroku extends Base {
 
     private WebDriver driver;
 
@@ -25,7 +25,7 @@ public class testHeroku extends Base {
     }
 
     @Test
-    public void test_one(){
+    public void testOne(){
         SoftAssert softAssert = new SoftAssert();
         WebDriverWait wait = new WebDriverWait(driver,5);
 
@@ -34,7 +34,7 @@ public class testHeroku extends Base {
         driver.get("http://the-internet.herokuapp.com/");
 
         // Seleccionar la opción dropdown
-        driver.findElement(By.xpath("//div[@id='content']/ul/li/a[@href='/dropdown']")).click();
+        driver.findElement(By.xpath("//a[@href='/dropdown']")).click();
 
         // Seleccionar la opción 2 (por value)
         WebElement dropdownElement = driver.findElement(By.id("dropdown"));
@@ -71,7 +71,7 @@ public class testHeroku extends Base {
     }
 
     @Test
-    public void test_two() throws InterruptedException {
+    public void testTwo() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         WebDriverWait wait = new WebDriverWait(driver,5);
         int actualCount = 0;
@@ -80,7 +80,7 @@ public class testHeroku extends Base {
         driver.get("http://the-internet.herokuapp.com/");
 
         // Seleccionar la opción add/remove elements
-        driver.findElement(By.xpath("//div[@id='content']/ul/li/a[@href='/add_remove_elements/']")).click();
+        driver.findElement(By.xpath("//a[@href='/add_remove_elements/']")).click();
 
         // Verificar que el título diga Add/Remove Elements (assert)
         WebElement titleElement = driver.findElement(By.xpath("//h3"));
@@ -114,16 +114,16 @@ public class testHeroku extends Base {
     }
 
     @Test
-    public void test_three() {
+    public void testThree() {
         SoftAssert softAssert = new SoftAssert();
-        WebDriverWait wait = new WebDriverWait(driver,15);
+        WebDriverWait wait = new WebDriverWait(driver,6);
         int actualCount = 0;
 
         // Ir a http://the-internet.herokuapp.com/
         driver.get("http://the-internet.herokuapp.com/");
 
         // Seleccionar la opción Form Authentication
-        driver.findElement(By.xpath("//div[@id='content']/ul/li/a[@href='/login']")).click();
+        driver.findElement(By.xpath("//a[@href='/login']")).click();
 
         // Verificar que el título sea login page (assert)
         Assert.assertEquals(driver.findElement(By.xpath("//h2")).getText(),"Login Page");
@@ -161,7 +161,7 @@ public class testHeroku extends Base {
         softAssert.assertAll();
     }
 
-    @AfterTest
+    @AfterMethod
     public void afterTest(){
         driver.quit();
     }
