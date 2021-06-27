@@ -103,7 +103,7 @@ public class TestHeroku extends Base {
         softAssert.assertTrue(driver.findElement(By.xpath("//button[@class='added-manually']")).isDisplayed());
 
         // Hacer clic en delete
-        driver.findElement(By.xpath("//button[@class='added-manually']")).click();
+        driver.findElement(By.className("added-manually")).click();
 
         // Verificar que el botón delete NO es visible
         listDeletes = driver.findElements(By.className("added-manually"));
@@ -150,6 +150,7 @@ public class TestHeroku extends Base {
         Assert.assertEquals(titleElement.getText(),"Secure Area");
 
         // Verificar que el mensaje de éxito salga arriba (assert)
+        // usando find by class no encuentra el elemento
         Assert.assertTrue(driver.findElement(By.xpath("//div[@class='flash success']")).isDisplayed());
 
         // Hacer clic en logout

@@ -11,7 +11,7 @@ import practice.Base;
 
 import java.util.List;
 
-public class testTravels extends Base {
+public class TestTravels extends Base {
     private WebDriver driver;
 
     // Tarea:
